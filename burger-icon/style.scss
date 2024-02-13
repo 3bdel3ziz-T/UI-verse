@@ -1,0 +1,77 @@
+@use "../normalize" as *;
+
+.burger {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+  input[type="checkbox"] {
+    transition: 300ms;
+  }
+  &::before,
+  &::after {
+    content: "";
+    transform-origin: center center;
+  }
+  & .line,
+  &::before,
+  &::after {
+    width: 25px;
+    height: 2px;
+    display: block;
+    background-color: black;
+    border-radius: 5px;
+    position: absolute;
+  }
+  &::before {
+    transform: translateY(8px);
+  }
+  &::after {
+    transform: translateY(-8px);
+  }
+  .line:checked {
+    width: 0;
+    transition-delay: 100ms;
+  }
+  &:has(.line:checked)::before {
+    animation: animation1 400ms ease-out 0s 1 both;
+  }
+  &:has(.line:checked)::after {
+    animation: animation2 400ms ease-out 0s 1 both;
+  }
+  &:hover .line,
+  &:hover::before,
+  &:hover::after {
+    background: #e8e8e8;
+  }
+  &:active {
+    scale: 0.95;
+  }
+}
+
+@keyframes animation1 {
+  0% {
+    transform: translateY(8px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(45deg);
+  }
+}
+@keyframes animation2 {
+  0% {
+    transform: translateY(-8px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(-45deg);
+  }
+}

@@ -1,0 +1,95 @@
+@use "../../normalize" as *;
+
+.card {
+  transition: all 400ms ease-out;
+  position: relative;
+  font-family: sans-serif;
+  user-select: none;
+  width: 170px;
+  height: 250px;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background: linear-gradient(
+    to bottom right,
+    #c471ed,
+    #a17fe0,
+    #654ea3,
+    #12c2e9,
+    #12c2e9
+  );
+  // background-image: url(https://media.istockphoto.com/id/1672317574/photo/ama-dablam-mountain-peak.webp?b=1&s=170667a&w=0&k=20&c=Ea8yDEHpUemrRuMZUKGPDBE11YTWVksIupMN8FkEBf8=);
+  &::before {
+    backdrop-filter: blur(10px);
+    background-color: transparent;
+    z-index: 999;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    transition: 400ms;
+  }
+  &::after {
+    content: "hover";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    transition: 200ms;
+    opacity: 1;
+  }
+  .head {
+    .title {
+      color: white;
+      font-size: 22px;
+      margin-bottom: 5px;
+      transition: all 400ms ease-out;
+      position: relative;
+      left: -120%;
+    }
+    .subtitle {
+      color: white;
+      font-size: 16px;
+      transition: all 400ms ease-out;
+      position: relative;
+      left: -120%;
+      transition-delay: 100ms;
+    }
+  }
+  p {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    transition: all 400ms ease-out;
+    position: relative;
+    left: -120%;
+    transition-delay: 200ms;
+  }
+  &:hover {
+    scale: 1.1;
+    &::before {
+      backdrop-filter: blur(30px);
+    }
+    &::after {
+      opacity: 0;
+    }
+    .title,
+    .subtitle,
+    p {
+      left: 0;
+    }
+  }
+}

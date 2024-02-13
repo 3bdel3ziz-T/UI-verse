@@ -1,0 +1,184 @@
+@use "../normalize" as *;
+/*main btn styles*/
+.learn-more {
+  position: relative;
+  height: fit-content;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 210px;
+  height: 40px;
+  text-align: center;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-indent: 50px;
+  transition: 300ms;
+  font-weight: 500;
+  /*Container styles*/
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  &::before {
+    content: "";
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #282936;
+    z-index: -1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 17px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transition: 400ms;
+  }
+  &:hover {
+    text-indent: 15px;
+    color: white;
+    font-weight: 600;
+    &::before {
+      width: 100%;
+    }
+    &::after {
+      left: calc(100% - 25px);
+    }
+  }
+  &:active {
+    scale: 0.95;
+  }
+}
+
+/*Paragraph before styles*/
+.msg {
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+  color: white;
+  border-radius: 15px;
+  padding: 5px 12px;
+  text-shadow: 1px 1px 20px black;
+  &::before,
+  &::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: white;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    z-index: 1;
+  }
+  &::before {
+    animation: circle-animation 5s ease-in-out 0s infinite normal both;
+    background: black;
+  }
+
+  &::after {
+    animation: circle-animation 10s ease-in-out 0s infinite reverse both;
+  }
+}
+
+@keyframes circle-animation {
+  0% {
+    top: 0;
+    left: 0;
+    height: 20px;
+  }
+  5% {
+    top: 20px;
+    height: 15px;
+  }
+  10% {
+    top: -10px;
+    height: 20px;
+  }
+  15% {
+    top: 20px;
+    height: 15px;
+  }
+  20% {
+    top: -10px;
+    height: 20px;
+  }
+  25% {
+    top: 20px;
+    height: 15px;
+  }
+  30% {
+    top: -10px;
+    height: 20px;
+  }
+  35% {
+    top: 20px;
+    height: 15px;
+  }
+  40% {
+    top: -10px;
+    height: 20px;
+  }
+  45% {
+    top: 20px;
+    height: 15px;
+  }
+  50% {
+    top: 15px;
+    left: 100%;
+    height: 15px;
+  }
+  55% {
+    top: -10px;
+    height: 20px;
+  }
+  60% {
+    top: 20px;
+    height: 15px;
+  }
+  65% {
+    top: -10px;
+    height: 20px;
+  }
+  70% {
+    top: 20px;
+    height: 15px;
+  }
+  75% {
+    top: -10px;
+    height: 20px;
+  }
+  80% {
+    top: 20px;
+    height: 15px;
+  }
+  85% {
+    top: -10px;
+    height: 20px;
+  }
+  90% {
+    top: 20px;
+    height: 15px;
+  }
+  95% {
+    top: -10px;
+    height: 20px;
+  }
+  100% {
+    top: 20px;
+    left: 0%;
+    height: 15px;
+  }
+}

@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+
+.btn {
+  width: 50px;
+  background: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  outline: none;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+}
+
+.btn .svg-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 900ms;
+  z-index: -1;
+}
+
+.btn svg {
+  width: 20px;
+  color: white;
+}
+
+.btn::after {
+  position: relative;
+  width: 0px;
+  content: "instagram";
+  text-align: center;
+  transition: 600ms ease-out;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  color: transparent;
+}
+
+.btn:hover {
+  width: 150px;
+}
+
+.btn:hover > .svg-box {
+  color: rgb(255, 0, 0);
+  background: transparent;
+}
+
+.btn::before {
+  content: "";
+  transition: 800ms;
+  background: linear-gradient(
+    to top left,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  z-index: -2;
+  position: absolute;
+  left: 0;
+  border-radius: 25px;
+  height: 100%;
+  width: 50px;
+}
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn:hover::after {
+  color: white;
+  width: 100px;
+}
