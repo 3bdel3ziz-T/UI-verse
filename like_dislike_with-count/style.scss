@@ -1,0 +1,127 @@
+@use "../normalize" as *;
+
+.container {
+  --col-gray: #3f3f3f;
+  --col-white: #fff;
+  --col-like: #2196f3;
+  --col-dislike: #ff3232;
+  --transition: 350ms;
+  background-color: var(--col-gray);
+  width: 130px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px;
+  user-select: none;
+  --zero: translateY(calc(50% - 8px));
+  --one: translateY(calc(40% - 8px));
+  --two: translateY(calc(30% - 8px));
+  --three: translateY(calc(20% - 8px));
+  --four: translateY(calc(10% - 8px));
+  --five: translateY(calc(0% - 8px));
+  --six: translateY(calc(-10% - 8px));
+  --seven: translateY(calc(-20% - 8px));
+  --eight: translateY(calc(-30% - 8px));
+  --nine: translateY(calc(-40% - 8px));
+  --ten: translateY(calc(-50% - 8px));
+  &:has(#like:checked) .count {
+    border-left-color: var(--col-like);
+    border-right-color: transparent;
+    .number:first-child {
+      transform: var(--nine);
+    }
+    .number:nth-child(2) {
+      transform: var(--five);
+    }
+    .number:last-child {
+      transform: var(--three);
+    }
+  }
+  &:has(#dislike:checked) > .count {
+    border-right-color: var(--col-dislike);
+    border-left-color: transparent;
+    .number:first-child {
+      transform: var(--zero);
+    }
+    .number:nth-child(2) {
+      transform: var(--zero);
+    }
+    .number:last-child {
+      transform: var(--nine);
+    }
+  }
+  label {
+    input {
+      display: none;
+    }
+  }
+  #like:checked + svg {
+    animation: evaluation-animation var(--transition) ease-in-out 0s 1 normal
+      both;
+    fill: var(--col-like);
+  }
+  #dislike:checked + svg {
+    animation: evaluation-animation var(--transition) ease-in-out 0s 1 normal
+      both;
+    fill: var(--col-dislike);
+  }
+  .icon {
+    cursor: pointer;
+    fill: var(--col-white);
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.like {
+      margin-left: 9px;
+    }
+    &.dislike {
+      margin-right: 9px;
+    }
+  }
+  .count {
+    transition: var(--transition);
+    flex: 1;
+    justify-content: center;
+    border-left: 1px solid var(--col-white);
+    border-right: 1px solid var(--col-white);
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    margin: auto;
+    color: white;
+    font-size: 16px;
+    font-family: sans-serif;
+    display: flex;
+    gap: 0.5px;
+    align-items: center;
+    flex-direction: row;
+    .number {
+      display: flex;
+      flex-direction: column;
+      transform: translateY(calc(50% - 8px));
+      transition: 1000ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      &:first-child {
+        transition-delay: 200ms;
+      }
+      &:nth-child(2) {
+        transition-delay: 150ms;
+      }
+      &:last-child {
+        transition-delay: 50ms;
+      }
+    }
+  }
+}
+
+@keyframes evaluation-animation {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(-10deg);
+  }
+}
