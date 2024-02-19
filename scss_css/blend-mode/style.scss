@@ -1,0 +1,44 @@
+@use "../../normalize" as *;
+
+.parent {
+  position: relative;
+  width: fit-content;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-family: sans-serif;
+  padding: 20px;
+  border-radius: 900px;
+  box-shadow: 1px 1px 15px 5px #eee;
+  color: red;
+  background-color: white;
+  z-index: 0;
+  &::before {
+    content: "";
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: moveX 7s linear infinite both;
+    z-index: 1;
+    background-color: white;
+    mix-blend-mode: difference;
+    p {
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+@keyframes moveX {
+  0%,
+  100% {
+    left: 0%;
+  }
+  50% {
+    left: calc(100% - 60px);
+  }
+}
