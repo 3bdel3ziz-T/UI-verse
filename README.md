@@ -7,8 +7,8 @@ UI-verse website doesn't allow SACC/SCSS style sheets just allows CSS or Tailwin
 # what will you find in this repo ?
 You will find buttons, animations as (hover, focus, check, ...), forms, checkboxes, input fields and custom shapes.
 
-###Important note.
+### Important note.
 the normalize file is important to has the same shape as you see.
 
-##All components on my acc on UI-verse
+## All components on my acc on UI-verse
   acc URL: https://uiverse.io/profile/3bdel3ziz-T
