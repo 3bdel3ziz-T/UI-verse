@@ -1,0 +1,103 @@
+@use "../../normalize" as *;
+
+.insta {
+  width: 50px;
+  background: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  outline: none;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+  .svg-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: 900ms;
+    z-index: -1;
+    .instagram-icon {
+      --thickness: 2.5px;
+      --volume: 27px;
+      position: relative;
+      width: var(--volume);
+      height: var(--volume);
+      border-radius: 35%;
+      border: var(--thickness) solid white;
+      &::before,
+      &::after {
+        content: "";
+        border: var(--thickness) solid white;
+        position: absolute;
+        border-radius: 50%;
+      }
+      &::before {
+        --volume: 8px;
+        width: var(--volume);
+        height: var(--volume);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &::after {
+        --volume: 0px;
+        width: var(--volume);
+        height: var(--volume);
+        background-color: white;
+        top: 2.5px;
+        right: 2.5px;
+      }
+    }
+  }
+  &::before {
+    content: "";
+    transition: 800ms;
+    background: linear-gradient(
+      to top left,
+      #fdf497 0%,
+      #fdf497 5%,
+      #fd5949 45%,
+      #d6249f 60%,
+      #285aeb 90%
+    );
+    z-index: -2;
+    position: absolute;
+    left: 0;
+    border-radius: 25px;
+    height: 100%;
+    width: 50px;
+  }
+  &::after {
+    content: "instagram";
+    position: relative;
+    width: 0px;
+    text-align: center;
+    transition: 600ms ease-out;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    color: transparent;
+  }
+  &:hover {
+    width: 150px;
+    &::before {
+      width: 100%;
+    }
+    > .svg-box {
+      color: rgb(255, 0, 0);
+      background: transparent;
+    }
+    &::after {
+      color: white;
+      width: 100px;
+    }
+  }
+}
