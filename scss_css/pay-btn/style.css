@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -39,7 +40,8 @@ button {
   --col-gray: #808080;
   --transition350: 350ms;
   --transition300: 300ms;
-  --loadCount: 3;
+  /*You can easily control loading time form this variable👇*/
+  --loadTime: 3;
   padding: 5px;
   border: 2px solid var(--col-tea);
   width: 200px;
@@ -149,7 +151,7 @@ button {
   transition-duration: 400ms;
   transition-property: all;
   transition-timing-function: linear;
-  transition-delay: calc(var(--loadCount) * 1s + 0.2s);
+  transition-delay: calc(var(--loadTime) * 1s + 0.2s);
 }
 .pay-box .label-btn .done-box svg .stroke {
   stroke: var(--col-green);
@@ -176,15 +178,15 @@ button {
   width: 80%;
 }
 .pay-box .label-btn:has(#buy-btn:checked) .loader::before {
-  animation: moving 1s ease-in-out calc(var(--loadCount) * 1) normal both;
+  animation: moving 1s ease-in-out calc(var(--loadTime) * 1) normal both;
 }
 .pay-box .label-btn:has(#buy-btn:checked) .done-box {
-  animation: Opacity var(--transition300) ease-out calc(var(--loadCount) * 1s) 1 normal both;
+  animation: Opacity var(--transition300) ease-out calc(var(--loadTime) * 1s) 1 normal both;
 }
 .pay-box .label-btn:has(#buy-btn:checked) svg .background,
 .pay-box .label-btn:has(#buy-btn:checked) svg .stroke,
 .pay-box .label-btn:has(#buy-btn:checked) svg .check {
-  animation: dashOffset 800ms linear calc(var(--loadCount) * 1s) 1 normal forwards;
+  animation: dashOffset 800ms linear calc(var(--loadTime) * 1s) 1 normal forwards;
 }
 .pay-box:has(#buy-btn:checked) .price {
   width: 0;
