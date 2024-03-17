@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.play_state {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: visible;
+}
+.play_state::before, .play_state::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 33%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 50px;
+  border-style: solid;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 50px solid #555555;
+  border-right: 0;
+  transition: 300ms;
+}
+.play_state::before {
+  height: 0;
+  left: 75%;
+}
+.play_state:has(#play_pause:checked)::before, .play_state:has(#play_pause:checked)::after {
+  height: 100px;
+  border-left-width: 25px;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+}
+.play_state:has(#play_pause:checked)::before {
+  left: calc(100% - 35px);
+}
+.play_state:has(#play_pause:checked)::after {
+  left: 0px;
+}

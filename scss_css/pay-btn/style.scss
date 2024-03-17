@@ -1,0 +1,190 @@
+@use "../../normalize" as *;
+
+.pay-box {
+  --col-tea: #ca3c25;
+  --col-green: #7fb069;
+  --col-wood: #e6aa68;
+  --col-gray: #808080;
+  --transition350: 350ms;
+  --transition300: 300ms;
+  --loadCount: 3;
+  padding: 5px;
+  border: 2px solid var(--col-tea);
+  width: 200px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  overflow: hidden;
+  user-select: none;
+  .price {
+    position: relative;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition350);
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    .title {
+      color: var(--col-gray);
+      font-size: 9px;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+    }
+    .total {
+      font-size: 18px;
+      color: var(--col-green);
+      .currency {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--col-wood);
+      }
+    }
+  }
+  .label-btn {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--col-tea);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+    border: 2px solid transparent;
+    transition: var(--transition350);
+    &::before {
+      content: "pay now";
+      transition: var(--transition300);
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      text-wrap: nowrap;
+    }
+    .loader {
+      display: block;
+      --height-of-loader: 4px;
+      --loader-color: var(--col-wood);
+      width: 0px;
+      height: var(--height-of-loader);
+      border-radius: 30px;
+      background-color: rgba(0, 0, 0, 0.2);
+      position: absolute;
+      transition: var(--transition350);
+      &::before {
+        content: "";
+        position: absolute;
+        background: var(--loader-color);
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        border-radius: 30px;
+      }
+    }
+    .done-box {
+      display: flex;
+      position: absolute;
+      background-color: var(--col-tea);
+      width: 100%;
+      height: 100%;
+      color: var(--col-wood);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: inherit;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 25%;
+      svg {
+        .background,
+        .stroke,
+        .check {
+          fill: none;
+          transition-duration: 400ms;
+          transition-property: all;
+          transition-timing-function: linear;
+          transition-delay: calc((var(--loadCount) * 1s) + 0.2s);
+        }
+        .stroke {
+          stroke: var(--col-green);
+          stroke-miterlimit: 10;
+          stroke-width: 2px;
+          stroke-dashoffset: 100;
+          stroke-dasharray: 100;
+        }
+        .check {
+          stroke: var(--col-green);
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-width: 2px;
+          stroke-dashoffset: 22;
+          stroke-dasharray: 22;
+        }
+      }
+    }
+    &:hover {
+      color: var(--col-wood);
+    }
+    &:has(#buy-btn:checked) {
+      &::before {
+        top: 150%;
+      }
+      .loader {
+        width: 80%;
+        &::before {
+          animation: moving 1s ease-in-out calc(var(--loadCount) * 1) normal
+            both;
+        }
+      }
+      .done-box {
+        animation: Opacity var(--transition300) ease-out
+          calc(var(--loadCount) * 1s) 1 normal both;
+      }
+      svg {
+        .background,
+        .stroke,
+        .check {
+          animation: dashOffset 800ms linear calc(var(--loadCount) * 1s) 1
+            normal forwards;
+        }
+      }
+    }
+  }
+  &:has(#buy-btn:checked) {
+    .price {
+      width: 0;
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+@keyframes Opacity {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dashOffset {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

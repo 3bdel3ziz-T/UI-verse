@@ -1,0 +1,213 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.pay-box {
+  --col-tea: #ca3c25;
+  --col-green: #7fb069;
+  --col-wood: #e6aa68;
+  --col-gray: #808080;
+  --transition350: 350ms;
+  --transition300: 300ms;
+  --loadCount: 3;
+  padding: 5px;
+  border: 2px solid var(--col-tea);
+  width: 200px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.pay-box .price {
+  position: relative;
+  width: 60px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition350);
+  flex-wrap: nowrap;
+  text-wrap: nowrap;
+}
+.pay-box .price .title {
+  color: var(--col-gray);
+  font-size: 9px;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.pay-box .price .total {
+  font-size: 18px;
+  color: var(--col-green);
+}
+.pay-box .price .total .currency {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--col-wood);
+}
+.pay-box .label-btn {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--col-tea);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+  border: 2px solid transparent;
+  transition: var(--transition350);
+}
+.pay-box .label-btn::before {
+  content: "pay now";
+  transition: var(--transition300);
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  text-wrap: nowrap;
+}
+.pay-box .label-btn .loader {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: var(--col-wood);
+  width: 0px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  transition: var(--transition350);
+}
+.pay-box .label-btn .loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+}
+.pay-box .label-btn .done-box {
+  display: flex;
+  position: absolute;
+  background-color: var(--col-tea);
+  width: 100%;
+  height: 100%;
+  color: var(--col-wood);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 25%;
+}
+.pay-box .label-btn .done-box svg .background,
+.pay-box .label-btn .done-box svg .stroke,
+.pay-box .label-btn .done-box svg .check {
+  fill: none;
+  transition-duration: 400ms;
+  transition-property: all;
+  transition-timing-function: linear;
+  transition-delay: calc(var(--loadCount) * 1s + 0.2s);
+}
+.pay-box .label-btn .done-box svg .stroke {
+  stroke: var(--col-green);
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+}
+.pay-box .label-btn .done-box svg .check {
+  stroke: var(--col-green);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+  stroke-dashoffset: 22;
+  stroke-dasharray: 22;
+}
+.pay-box .label-btn:hover {
+  color: var(--col-wood);
+}
+.pay-box .label-btn:has(#buy-btn:checked)::before {
+  top: 150%;
+}
+.pay-box .label-btn:has(#buy-btn:checked) .loader {
+  width: 80%;
+}
+.pay-box .label-btn:has(#buy-btn:checked) .loader::before {
+  animation: moving 1s ease-in-out calc(var(--loadCount) * 1) normal both;
+}
+.pay-box .label-btn:has(#buy-btn:checked) .done-box {
+  animation: Opacity var(--transition300) ease-out calc(var(--loadCount) * 1s) 1 normal both;
+}
+.pay-box .label-btn:has(#buy-btn:checked) svg .background,
+.pay-box .label-btn:has(#buy-btn:checked) svg .stroke,
+.pay-box .label-btn:has(#buy-btn:checked) svg .check {
+  animation: dashOffset 800ms linear calc(var(--loadCount) * 1s) 1 normal forwards;
+}
+.pay-box:has(#buy-btn:checked) .price {
+  width: 0;
+  opacity: 0;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+@keyframes Opacity {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dashOffset {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
