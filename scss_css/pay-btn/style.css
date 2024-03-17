@@ -144,21 +144,12 @@ button {
   overflow: hidden;
   padding: 0 25%;
 }
-.pay-box .label-btn .done-box svg .background,
-.pay-box .label-btn .done-box svg .stroke,
 .pay-box .label-btn .done-box svg .check {
   fill: none;
   transition-duration: 400ms;
   transition-property: all;
   transition-timing-function: linear;
   transition-delay: calc(var(--loadTime) * 1s + 0.2s);
-}
-.pay-box .label-btn .done-box svg .stroke {
-  stroke: var(--col-green);
-  stroke-miterlimit: 10;
-  stroke-width: 2px;
-  stroke-dashoffset: 100;
-  stroke-dasharray: 100;
 }
 .pay-box .label-btn .done-box svg .check {
   stroke: var(--col-green);
@@ -183,8 +174,6 @@ button {
 .pay-box .label-btn:has(#buy-btn:checked) .done-box {
   animation: Opacity var(--transition300) ease-out calc(var(--loadTime) * 1s) 1 normal both;
 }
-.pay-box .label-btn:has(#buy-btn:checked) svg .background,
-.pay-box .label-btn:has(#buy-btn:checked) svg .stroke,
 .pay-box .label-btn:has(#buy-btn:checked) svg .check {
   animation: dashOffset 800ms linear calc(var(--loadTime) * 1s) 1 normal forwards;
 }

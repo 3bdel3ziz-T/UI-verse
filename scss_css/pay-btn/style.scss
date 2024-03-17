@@ -107,21 +107,12 @@
       overflow: hidden;
       padding: 0 25%;
       svg {
-        .background,
-        .stroke,
         .check {
           fill: none;
           transition-duration: 400ms;
           transition-property: all;
           transition-timing-function: linear;
           transition-delay: calc((var(--loadTime) * 1s) + 0.2s);
-        }
-        .stroke {
-          stroke: var(--col-green);
-          stroke-miterlimit: 10;
-          stroke-width: 2px;
-          stroke-dashoffset: 100;
-          stroke-dasharray: 100;
         }
         .check {
           stroke: var(--col-green);
@@ -143,8 +134,7 @@
       .loader {
         width: 80%;
         &::before {
-          animation: moving 1s ease-in-out calc(var(--loadTime) * 1) normal
-            both;
+          animation: moving 1s ease-in-out calc(var(--loadTime) * 1) normal both;
         }
       }
       .done-box {
@@ -152,11 +142,9 @@
           calc(var(--loadTime) * 1s) 1 normal both;
       }
       svg {
-        .background,
-        .stroke,
         .check {
-          animation: dashOffset 800ms linear calc(var(--loadTime) * 1s) 1
-            normal forwards;
+          animation: dashOffset 800ms linear calc(var(--loadTime) * 1s) 1 normal
+            forwards;
         }
       }
     }
